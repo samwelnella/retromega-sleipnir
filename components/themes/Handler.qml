@@ -9,7 +9,7 @@ Item {
 
     function setFontScale(smallFont) {
         if (smallFont) {
-            fontScale = 0.6;
+            fontScale = 0.75;
         } else {
             fontScale = 1.0;
         }

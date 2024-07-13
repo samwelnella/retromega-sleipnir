@@ -98,15 +98,36 @@ Rectangle {
             opacity: 0.5;
         }
 
-        Battery {
-            id: battery;
+        Row {
+            id: headerBatteryWidget;
 
-            visible: showBattery;
-            opacity: 0.5;
-            shade: parent.shade;
-            height: parent.height * .25;
-            width: parent.height * .55;
-            anchors.verticalCenter: parent.verticalCenter;
+            property string shade: parent.shade;
+            spacing: parent.height * .15;
+            height: parent.height;
+
+//            anchors {
+//                right: parent.right;
+//                rightMargin: parent.height * .30;
+//            }
+
+            Battery {
+                id: battery;
+
+                visible: showBattery;
+                opacity: 0.5;
+                shade: parent.shade;
+                height: parent.height * .25;
+                width: parent.height * .55;
+                anchors.verticalCenter: parent.verticalCenter;
+            }
+
+            BatteryPercent {
+                id: batteryPercent;
+
+                shade: parent.shade;
+                height: parent.height;
+                opacity: 0.5;
+            }
         }
 
         Text {

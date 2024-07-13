@@ -113,8 +113,8 @@ Item {
         fillMode: Image.PreserveAspectFit;
         horizontalAlignment: Image.AlignHCenter;
         asynchronous: true;
-        smooth: true;
-        visible: true;
+        smooth: false;
+        visible: false;
 
         anchors {
             verticalCenter: parent.verticalCenter;
@@ -124,13 +124,13 @@ Item {
         }
     }
 
-    // DropShadow {
-    //     source: device;
-    //     verticalOffset: 10;
-    //     color: '#30000000';
-    //     radius: 20;
-    //     samples: 41;
-    //     cached: true;
-    //     anchors.fill: device;
-    // }
+     DropShadow {
+         source: device;
+         verticalOffset: 10;
+         color: '#30000000';
+         radius: 20;
+         samples: 41;
+         cached: true;
+         anchors.fill: device;
+     }
 }
