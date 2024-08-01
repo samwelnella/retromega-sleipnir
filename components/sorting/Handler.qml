@@ -57,6 +57,18 @@ Item {
             title: 'Only Multiplayer';
             type: 'onlyMultiplayer';
         }
+
+        ListElement {
+            key: 'gameType';
+            title: 'Game Type:';
+            type: 'gameType';
+        }
+
+        ListElement {
+            key: 'regionType';
+            title: 'Region Type:';
+            type: 'regionType';
+        }
     }
 
     function updateSort(key, defaultSort) {
@@ -86,6 +98,10 @@ Item {
             favorite: updateSort('favorite', Qt.DescendingOrder),
             onlyFavorites: () => { onlyFavorites = !onlyFavorites; },
             onlyMultiplayer: () => { onlyMultiplayer = !onlyMultiplayer; },
+            onlyRetail: () => { onlyRetail = !onlyRetail; },
+            onlyUSA: () => { onlyUSA = !onlyUSA; },
+            gameType: () => { gameTypeIndex = (gameTypeIndex + 1) %gameTypes.length ; gameType = gameTypes[gameTypeIndex] ;},
+            regionType: () => { regionTypeIndex = (regionTypeIndex + 1) %regionTypes.length ; regionType = regionTypes[regionTypeIndex] ;},
         };
 
         callbacks[key]();

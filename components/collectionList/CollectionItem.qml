@@ -81,6 +81,8 @@ Item {
         filters: [
             ValueFilter { roleName: 'favorite'; value: true; enabled: onlyFavorites; },
             ExpressionFilter { enabled: onlyMultiplayer; expression: { return players > 1; } },
+            ExpressionFilter { enabled: gameType; expression: { return tagList.includes(gameType); } },
+            ExpressionFilter { enabled: regionType; expression: { return tagList.includes(regionType); } },
             RegExpFilter { roleName: 'title'; pattern: nameFilter; caseSensitivity: Qt.CaseInsensitive; enabled: nameFilter !== ''; }
         ]
     }

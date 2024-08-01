@@ -76,6 +76,26 @@ Item {
         }
 
         DelegateChoice {
+            roleValue: 'gameType';
+
+            ListFilterItem {
+                width: sortingListView.width;
+                height: itemHeight;
+                value: gameType;
+            }
+        }
+
+        DelegateChoice {
+            roleValue: 'regionType';
+
+            ListFilterItem {
+                width: sortingListView.width;
+                height: itemHeight;
+                value: regionType;
+            }
+        }
+
+        DelegateChoice {
             roleValue: 'nameFilter';
 
             NameFilterItem {

@@ -33,6 +33,14 @@ FocusScope {
 
     property bool onlyFavorites: false;
     property bool onlyMultiplayer: false;
+    property bool onlyRetail: false;
+    property bool onlyUSA: false;
+    property string gameType: '';
+    property var gameTypes: ['', 'Retail', 'Translations', 'Hacks', 'Unlicensed', 'Aftermarket', 'Prototype', 'Pirated', 'Sample', 'Beta', 'Bad', 'Demo']
+    property int gameTypeIndex: 0;
+    property string regionType: '';
+    property var regionTypes: ['', 'USA', 'EUR', 'JPN', 'WORLD']
+    property int regionTypeIndex: 0;
     property bool favoritesOnTop: false;
     property string sortKey: 'sortBy';
     property var sortDir: Qt.AscendingOrder;
@@ -153,6 +161,8 @@ FocusScope {
 
         onlyFavorites = api.memory.get('onlyFavorites') ?? false;
         onlyMultiplayer = api.memory.get('onlyMultiplayer') ?? false;
+        gameType = api.memory.get('gameType') ?? '';
+        regionType = api.memory.get('regionType') ?? '';
         sortKey = api.memory.get('sortKey') ?? 'sortBy';
         sortDir = api.memory.get('sortDir') ?? Qt.AscendingOrder;
         nameFilter = api.memory.get('nameFilter') ?? '';
@@ -191,6 +201,8 @@ FocusScope {
 
         api.memory.set('onlyFavorites', onlyFavorites);
         api.memory.set('onlyMultiplayer', onlyMultiplayer);
+        api.memory.set('gameType', gameType);
+        api.memory.set('regionType', regionType);
         api.memory.set('sortKey', sortKey);
         api.memory.set('sortDir', sortDir);
         api.memory.set('nameFilter', nameFilter);
@@ -235,6 +247,8 @@ FocusScope {
         filters: [
             ValueFilter { roleName: 'favorite'; value: true; },
             ExpressionFilter { enabled: onlyMultiplayer; expression: { return players > 1; } },
+            ExpressionFilter { enabled: gameType; expression: { return tagList.includes(gameType); } },
+            ExpressionFilter { enabled: regionType; expression: { return tagList.includes(regionType); } },
             RegExpFilter { roleName: 'title'; pattern: nameFilter; caseSensitivity: Qt.CaseInsensitive; enabled: nameFilter !== ''; }
         ]
         sorters: RoleSorter { roleName: sortKey; sortOrder: sortDir }
@@ -247,6 +261,8 @@ FocusScope {
         filters: [
             ValueFilter { roleName: 'favorite'; value: true; enabled: onlyFavorites; },
             ExpressionFilter { enabled: onlyMultiplayer; expression: { return players > 1; } },
+            ExpressionFilter { enabled: gameType; expression: { return tagList.includes(gameType); } },
+            ExpressionFilter { enabled: regionType; expression: { return tagList.includes(regionType); } },
             RegExpFilter { roleName: 'title'; pattern: nameFilter; caseSensitivity: Qt.CaseInsensitive; enabled: nameFilter !== ''; },
             ExpressionFilter {
                 expression: {
@@ -276,6 +292,8 @@ FocusScope {
         filters: [
             ValueFilter { roleName: 'favorite'; value: true; enabled: onlyFavorites; },
             ExpressionFilter { enabled: onlyMultiplayer; expression: { return players > 1; } },
+            ExpressionFilter { enabled: gameType; expression: { return tagList.includes(gameType); } },
+            ExpressionFilter { enabled: regionType; expression: { return tagList.includes(regionType); } },
             RegExpFilter { roleName: 'title'; pattern: nameFilter; caseSensitivity: Qt.CaseInsensitive; enabled: nameFilter !== ''; }
         ]
     }
