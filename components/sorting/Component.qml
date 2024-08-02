@@ -78,11 +78,12 @@ Item {
             const currentKey = sorting.model.get(sortingScroll.sortingListView.currentIndex).key;
             if (currentKey === 'gameType' || currentKey === 'regionType') {
                 sorting.executeCallbackClear(currentKey);
-            };
-            if (currentKey === 'nameFilter') {
+            }
+            else if (currentKey === 'nameFilter') {
                 nameFilterModal.textInput.clear();
                 nameFilter = nameFilterModal.textInput.text;
-            };
+            }
+            else return;
         };
     }
 
