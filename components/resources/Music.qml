@@ -10,7 +10,7 @@ Item {
 
         // add music files into assets/music
         // uncomment PlaylistItem below and repeat for each music file
-        // PlaylistItem { source: '../../assets/music/whatever.mp3'; }
+        PlaylistItem { source: '../../assets/music/theepicskeptic.opus'; }
     }
 
     function volumeCheck() {

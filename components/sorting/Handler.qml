@@ -106,4 +106,13 @@ Item {
 
         callbacks[key]();
     }
+    
+    function executeCallbackClear(key) {
+        const callbacks = {
+            gameType: () => { gameTypeIndex = 0 ; gameType = gameTypes[gameTypeIndex] ;},
+            regionType: () => { regionTypeIndex = 0 ; regionType = regionTypes[regionTypeIndex] ;},
+        };
+
+        callbacks[key]();
+    }
 }
